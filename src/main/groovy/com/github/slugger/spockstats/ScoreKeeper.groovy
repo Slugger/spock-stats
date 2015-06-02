@@ -70,35 +70,29 @@ class ScoreKeeper extends AbstractRunListener {
 	
 	@Override
 	void beforeIteration(IterationInfo info) {
-		println 'beforeItr()'
 		currentItr = info
 		stats[currentFeature] << new Stats(info)
 	}
 	
 	@Override
 	void beforeFeature(FeatureInfo info) {
-		println 'beforeFeature()'
 		currentFeature = info
 		stats[info] = []
 	}
 	
 	@Override
 	void afterIteration(IterationInfo info) {
-		println 'afterItr()'
 		stats[currentFeature][-1].stop()
 		currentItr = null
 	}
 	
 	@Override
 	void afterFeature(FeatureInfo info) {
-		println 'afterFeature()'
 		currentFeature = null
 	}
 	
 	@Override
 	void error(ErrorInfo info) {
-		println 'Error()'
-		println currentItr.name
 		def stats = this.stats[currentFeature][-1]
 		stats.@result = Result.FAILED
 		stats.@error = info.exception
@@ -107,7 +101,6 @@ class ScoreKeeper extends AbstractRunListener {
 	
 	@Override
 	void featureSkipped(FeatureInfo info) {
-		println 'featureSkipped()'
 		stats[currentFeature] = []
 	}
 }

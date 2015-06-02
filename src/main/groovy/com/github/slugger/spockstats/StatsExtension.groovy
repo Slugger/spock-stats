@@ -28,9 +28,9 @@ class StatsExtension implements IGlobalExtension {
 	StatsExtension() {
 		Runtime.runtime.addShutdownHook {
 			def json = [:]
-			json.product = 'SIQ4L'
-			json.version = '1.0'
-			json.build = '1233'
+			json.product = System.getenv('SPOCK_STATS_PROD') ?: 'unknown'
+			json.version = System.getenv('SPOCK_STATS_VER') ?: 'unknown'
+			json.build = System.getenv('SPOCK_STATS_BLD') ?: 'unknown'
 			json.specs = specs.collect { specInfo, scoreKeeper ->
 				def data = [
 					specName: specInfo.description.toString(),
