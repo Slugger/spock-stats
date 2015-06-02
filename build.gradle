@@ -34,7 +34,7 @@ versionFile {
 	file = props
 }
 
-group = 'com.github.slugger.spock-stats'
+group = 'com.github.slugger.spockstats'
 version = versioning.info.display
 sourceCompatibility = '1.7'
 
