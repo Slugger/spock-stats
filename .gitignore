@@ -4,3 +4,4 @@
 /.project
 /bin/
 spock-stats.json*
+/build/
